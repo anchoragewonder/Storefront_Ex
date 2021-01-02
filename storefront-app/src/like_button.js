@@ -9,11 +9,11 @@ export class LikeButton extends React.Component {
 
     render() {
         if (this.state.liked) {
-            return 'the boolean is true';
+            return 'You liked this game!';
         }
         return (
             <button className='Button' onClick={() => this.setState({ liked: true })}>
-                False
+                Like
             </button>
         )
     }
