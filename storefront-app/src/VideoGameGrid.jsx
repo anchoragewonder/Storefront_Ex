@@ -1,5 +1,11 @@
 import React from "react";
 import { LikeButton } from './like_button';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 
 export class VideoGameGrid extends React.Component {
     constructor(props) {
@@ -7,32 +13,38 @@ export class VideoGameGrid extends React.Component {
         this.state = {
             games: [],
         };
-        this.getGames = this.getGames.bind(this);
     }
 
-    async getGames() {
-        const res = await fetch(`https://raw.githubusercontent.com/anchoragewonder/Storefront_Ex/JSX_Integration/storefront-app/src/Gamelist.json`);
-        const data = await res.json();
-        console.log(data);
-        return data.results;
-    }
-
-    async componentDidMount() {
-        const gameData = await this.getGames();
-        this.setState({ games: gameData });
+    componentDidMount() {
+        fetch("https://raw.githubusercontent.com/anchoragewonder/Storefront_Ex/JSX_Integration/storefront-app/src/Gamelist.json")
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ games: data.year });
+            })
     }
 
     render() {
         return (
-            <div>
-                {this.state.games.map((gaming) => (
-                    <div xs={6} md={4}>
-                        <h4>{gaming.year.game}</h4>
-                        <img src={gaming.year.Image} />
-                        <LikeButton />
-                    </div>
-                ))}
-            </div>
+            <Container>
+                <Row>
+                    {this.state.games.map((gaming) => (
+                        <Col className="col-auto mb-3">
+                            <CardDeck>
+                                <Card style={{ width: '20vw' }}>
+                                    <Card.Img variant="top" src={gaming.Image} />
+                                    <Card.Body>
+                                        <Card.Title>{gaming.game}</Card.Title>
+                                        <LikeButton />
+                                    </Card.Body>
+                                </Card>
+                            </CardDeck>
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
         );
     }
 }
+
+
+
