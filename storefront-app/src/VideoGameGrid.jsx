@@ -27,17 +27,15 @@ export class VideoGameGrid extends React.Component {
         return (
             <Container>
                 <Row>
-                    {this.state.games.map((gaming) => (
-                        <Col className="col-auto mb-3">
-                            <CardDeck>
-                                <Card style={{ width: '20vw' }}>
-                                    <Card.Img variant="top" src={gaming.Image} />
-                                    <Card.Body>
-                                        <Card.Title>{gaming.game}</Card.Title>
-                                        <LikeButton />
-                                    </Card.Body>
-                                </Card>
-                            </CardDeck>
+                    {this.state.games.map((gaming, index) => (
+                        <Col key={index} className="col-auto mb-3">
+                            <Card style={{ width: '20vw' }}>
+                                <Card.Img variant="top" src={gaming.Image} />
+                                <Card.Body>
+                                    <Card.Title>{gaming.game}</Card.Title>
+                                    <LikeButton />
+                                </Card.Body>
+                            </Card>
                         </Col>
                     ))}
                 </Row>
