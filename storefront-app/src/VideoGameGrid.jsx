@@ -1,10 +1,10 @@
 import React from "react";
 import { LikeButton } from './like_button';
 import Card from 'react-bootstrap/Card';
-import CardDeck from 'react-bootstrap/CardDeck';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import "./VideoGameGrid.css"
 
 
 export class VideoGameGrid extends React.Component {
@@ -28,8 +28,8 @@ export class VideoGameGrid extends React.Component {
             <Container>
                 <Row>
                     {this.state.games.map((gaming, index) => (
-                        <Col key={index} className="col-auto mb-3">
-                            <Card style={{ width: '20vw' }}>
+                        <Col key={index} className="mb-3" xs={6} md={4}>
+                            <Card className="cardSize">
                                 <Card.Img variant="top" src={gaming.Image} />
                                 <Card.Body>
                                     <Card.Title>{gaming.game}</Card.Title>

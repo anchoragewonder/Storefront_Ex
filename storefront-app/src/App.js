@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { VideoGameGrid } from "./VideoGameGrid"
 
 function App() {
   return (
@@ -8,6 +9,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Have you played the best video games over the years</p>
       </header>
+      <main>
+        <VideoGameGrid />
+      </main>
     </div>
   );
 }
