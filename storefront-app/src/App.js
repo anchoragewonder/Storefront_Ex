@@ -9,7 +9,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Have you played the best video games over the years</p>
       </header>
-      <main>
+      <main className="App-main">
         <VideoGameGrid />
       </main>
     </div>
