@@ -19,7 +19,7 @@ export class VideoGameGrid extends React.Component {
         fetch("https://raw.githubusercontent.com/anchoragewonder/Storefront_Ex/Navbar_Extra_Features/storefront-app/src/Gamelist.json")
             .then(response => response.json())
             .then(data => {
-                this.setState({ games: data });
+                this.setState({ games: data.yearlist });
             })
     }
 

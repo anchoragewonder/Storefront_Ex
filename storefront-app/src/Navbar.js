@@ -1,7 +1,8 @@
-import Nav from 'react-bootstrap/Nav'
+import Nav from 'react-bootstrap/Nav';
+import React from 'react';
 
 export class YearNav extends React.Component {
-    rener() {
+    render() {
         return (
             <Nav defaultActiveKey="/home" as="ul">
                 <Nav.Item as="li">
