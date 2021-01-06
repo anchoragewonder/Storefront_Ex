@@ -16,33 +16,35 @@ export class VideoGameGrid extends React.Component {
     }
 
     componentDidMount() {
-        fetch("https://raw.githubusercontent.com/anchoragewonder/Storefront_Ex/JSX_Integration/storefront-app/src/Gamelist.json")
+        fetch("https://raw.githubusercontent.com/anchoragewonder/Storefront_Ex/Navbar_Extra_Features/storefront-app/src/Gamelist.json")
             .then(response => response.json())
             .then(data => {
-                this.setState({ games: data.year });
+                this.setState({ games: data });
             })
     }
 
     render() {
         return (
-            <Container>
-                <Row>
-                    {this.state.games.map((gaming, index) => (
-                        <Col key={index} className="mb-3" xs={6} md={4}>
-                            <Card className="cardSize">
-                                <Card.Img variant="top" src={gaming.Image} />
-                                <Card.Body>
-                                    <Card.Title>{gaming.game}</Card.Title>
-                                    <LikeButton />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
-            </Container>
+            <div>
+                {this.state.games.map((gameyear, index) => (
+                    <Container id={gameyear} key={index}>
+                        <Row>
+                            {gameyear.map((gameEntry, index) => (
+                                <Col key={index} className="mb-3" xs={6} md={4}>
+                                    <Card className="cardSize">
+                                        <Card.Img variant="top" src={gameEntry.Image} />
+                                        <Card.Body>
+                                            <Card.Title>{gameEntry.game}</Card.Title>
+                                            <LikeButton />
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            ))}
+                        </Row>
+                    </Container>
+                ))}
+            </div>
         );
     }
 }
-
-
 
