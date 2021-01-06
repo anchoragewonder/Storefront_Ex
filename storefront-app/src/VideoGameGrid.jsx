@@ -26,23 +26,27 @@ export class VideoGameGrid extends React.Component {
     render() {
         return (
             <div>
-                {this.state.games.map((gameyear, index) => (
-                    <Container id={gameyear} key={index}>
-                        <Row>
-                            {gameyear.map((gameEntry, index) => (
-                                <Col key={index} className="mb-3" xs={6} md={4}>
-                                    <Card className="cardSize">
-                                        <Card.Img variant="top" src={gameEntry.Image} />
-                                        <Card.Body>
-                                            <Card.Title>{gameEntry.game}</Card.Title>
-                                            <LikeButton />
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            ))}
-                        </Row>
-                    </Container>
-                ))}
+                {this.state.games.map((gameyear, index) => {
+                    return (
+                        <Container id={gameyear} key={index}>
+                            <Row>
+                                {this.state.games.gameyear.map((gameEntry, index) => {
+                                    return (
+                                        <Col key={index} className="mb-3" xs={6} md={4}>
+                                            <Card className="cardSize">
+                                                <Card.Img variant="top" src={gameEntry.Image} />
+                                                <Card.Body>
+                                                    <Card.Title>{gameEntry.game}</Card.Title>
+                                                    <LikeButton />
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    );
+                                })}
+                            </Row>
+                        </Container>
+                    );
+                })}
             </div>
         );
     }
