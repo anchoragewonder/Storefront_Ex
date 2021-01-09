@@ -9,10 +9,10 @@ export class YearNav extends React.Component {
                     <Nav.Link href="/home">Home</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link eventKey="link-1" href="#year2020">2020</Nav.Link>
+                    <Nav.Link eventKey="link-1" href="#2020">2020</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link eventKey="link-2" href="#year2019">2019</Nav.Link>
+                    <Nav.Link eventKey="link-2" href="#2019">2019</Nav.Link>
                 </Nav.Item>
             </Nav>
         )
