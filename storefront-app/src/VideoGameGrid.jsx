@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import "./VideoGameGrid.css"
-
+var dict;
 
 export class VideoGameGrid extends React.Component {
     constructor(props) {
@@ -19,33 +19,42 @@ export class VideoGameGrid extends React.Component {
         fetch("https://raw.githubusercontent.com/anchoragewonder/Storefront_Ex/Navbar_Extra_Features/storefront-app/src/Gamelist.json")
             .then(response => response.json())
             .then(data => {
+                this.getYears = this.getYears.bind(this);
                 this.setState({ games: data.games });
+
             })
     }
 
     getYears() {
-        dict = new Object();
-        for (i = 0; i < games.length; i++) {
-            let currentGame = games[i];
-            let currentYear = games.year
+        dict = {};
+        for (let i = 0; i < this.state.games.length; i++) {
+            const currentGame = this.state.games[i];
+            const currentYear = currentGame.year
             if (!(currentYear in dict)) {
                 dict[currentYear] = [];
             }
             dict[currentYear].push(currentGame);
         }
-        // check the dictionary
-        console.log(dict);
+        // return pushed values sorted by year
+        return dict;
     }
 
+
     render() {
+
+        let listByYear = {};
+        listByYear = this.getYears();
+        console.log(listByYear);
+
         return (
             <div>
-                {dict.map((releaseDate, index) => {
+                {Object.keys(listByYear).map((releaseYear, index) => {
                     return (
-                        <Container id={releaseDate} key={index}>
-                            <h2>{releaseDate}</h2>
+                        <Container id={releaseYear} key={index}>
+                            <h2>{releaseYear}</h2>
                             <Row>
-                                {this.state.games.map((gameEntry, index) => {
+
+                                {listByYear[releaseYear].map((gameEntry, index) => {
                                     return (
                                         <Col key={index} className="mb-3" xs={6} md={4}>
                                             <Card className="cardSize">
@@ -63,7 +72,7 @@ export class VideoGameGrid extends React.Component {
                     )
                 })}
             </div>
-        );
+        )
     }
 }
 
